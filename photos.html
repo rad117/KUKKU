@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Our Memories 📸</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<audio id="bgMusic" loop>
+  <source src="images/bg-music.mp3" type="audio/mpeg">
+</audio>
+
+  <div class="container">
+    <h1>You Make me Happy💖</h1>
+
+    <!-- Slideshow Box -->
+    <div class="slideshow-container">
+
+      <img id="slideImage" src="images/photo1.jpeg" class="slide">
+
+      <!-- Buttons -->
+      <div class="slide-buttons">
+        <button onclick="prevSlide()">⬅ Prev</button>
+        <button onclick="nextSlide()">Next ➡</button>
+      </div>
+
+    </div>
+
+    <br>
+    <button onclick="location.href='gifts.html'">⬅ Back</button>
+  </div>
+
+  <script src="slideshow.js"></script>
+
+  <script>
+  const music = document.getElementById("bgMusic");
+
+  // Restore music state
+  const musicTime = localStorage.getItem("musicTime");
+  const musicPlaying = localStorage.getItem("musicPlaying");
+
+  if (musicTime) {
+    music.currentTime = parseFloat(musicTime);
+  }
+
+  if (musicPlaying === "true") {
+    music.play().catch(() => {});
+  }
+
+  // Save time continuously
+  setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+  }, 500);
+
+  // Mark as playing after first interaction
+  document.addEventListener("click", () => {
+    if (music.paused) {
+      music.play().catch(() => {});
+      localStorage.setItem("musicPlaying", "true");
+    }
+  });
+</script>
+
+</body>
+</html>

@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>I Knew It 💖</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+ <audio id="bgMusic" loop>
+  <source src="images/bg-music.mp3" type="audio/mpeg">
+</audio>
+
+<!-- Popup (auto opens) -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <h1>I KNEW YOU LOVE ME ❤️</h1>
+
+    <video autoplay controls playsinline>
+      <source src="images/love-video.mp4" type="video/mp4">
+    </video>
+
+    <button onclick="location.href='gifts.html'">
+      Open Gifts 🎁
+    </button>
+
+    <br><br>
+
+    <button class="back-btn" onclick="location.href='index.html'">
+      ⬅ Back to Valentine
+    </button>
+  </div>
+</div>
+
+  <script>
+    const popup = document.getElementById("popup");
+    const continueBtn = document.getElementById("continueBtn");
+    const afterPopup = document.getElementById("afterPopup");
+
+    continueBtn.addEventListener("click", () => {
+      popup.style.display = "none";
+      afterPopup.style.display = "block";
+    });
+  </script>
+
+<script>
+  const music = document.getElementById("bgMusic");
+
+  // Restore music state
+  const musicTime = localStorage.getItem("musicTime");
+  const musicPlaying = localStorage.getItem("musicPlaying");
+
+  if (musicTime) {
+    music.currentTime = parseFloat(musicTime);
+  }
+
+  if (musicPlaying === "true") {
+    music.play().catch(() => {});
+  }
+
+  // Save time continuously
+  setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+  }, 500);
+
+  // Mark as playing after first interaction
+  document.addEventListener("click", () => {
+    if (music.paused) {
+      music.play().catch(() => {});
+      localStorage.setItem("musicPlaying", "true");
+    }
+  });
+</script>
+
+</body>
+</html>

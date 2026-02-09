@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Love Letter 💌</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+ <audio id="bgMusic" loop>
+  <source src="images/bg-music.mp3" type="audio/mpeg">
+</audio>
+
+  <div class="container">
+    <h1>I Appriciate You 💖</h1>
+
+    <div class="letter-box">
+    My annoying KUKKS,<br /><br />
+      It’s been three years and somehow you’re still my favorite person.<br />
+      I don’t know how you pulled this off, but congrats<br />
+      you’ve officially survived loving me for Five whole years, and I’m still very much in love with you.<br />
+      Lucky you 😏<br />
+      Here’s to us, our chaos, and many more years of choosing each other.💖<br /><br />
+      
+      Happy Valentine’s Day 💘 <br><br>
+
+      Forever yours, <br>
+      <b>— Annoying Girlfriend 💋</b>
+    </div>
+
+    <br>
+    <button onclick="location.href='gifts.html'">⬅ Back</button>
+  </div>
+
+  <script>
+  const music = document.getElementById("bgMusic");
+
+  // Restore music state
+  const musicTime = localStorage.getItem("musicTime");
+  const musicPlaying = localStorage.getItem("musicPlaying");
+
+  if (musicTime) {
+    music.currentTime = parseFloat(musicTime);
+  }
+
+  if (musicPlaying === "true") {
+    music.play().catch(() => {});
+  }
+
+  // Save time continuously
+  setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+  }, 500);
+
+  // Mark as playing after first interaction
+  document.addEventListener("click", () => {
+    if (music.paused) {
+      music.play().catch(() => {});
+      localStorage.setItem("musicPlaying", "true");
+    }
+  });
+</script>
+
+</body>
+</html>

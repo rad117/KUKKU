@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Your Gifts 🎁</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+ <audio id="bgMusic" loop>
+  <source src="images/bg-music.mp3" type="audio/mpeg">
+</audio>
+
+  <div class="container">
+    <h1>Pick a Gift Box 🎀💖</h1>
+    <p style="color:white; font-size:20px;">
+      Click one to open your surprise
+    </p>
+
+    <!-- Gift Boxes -->
+    <div class="gift-grid">
+
+      <div class="present-box" onclick="openGift('letter.html','💌 A Love Letter!')">
+        🎁
+      </div>
+
+      <div class="present-box" onclick="openGift('photos.html','📸 Our memoriess')">
+        🎁
+      </div>
+
+    </div>
+
+    <!-- Surprise Reveal -->
+    <div id="giftReveal" class="gift-reveal">
+      <h2 id="giftText"></h2>
+      <button id="giftBtn">Open Gift ➡</button>
+    </div>
+
+    <br>
+    <button onclick="location.href='yes.html'">⬅ Back</button>
+  </div>
+
+  <script src="gifts.js"></script>
+  <script>
+  const music = document.getElementById("bgMusic");
+
+  // Restore music state
+  const musicTime = localStorage.getItem("musicTime");
+  const musicPlaying = localStorage.getItem("musicPlaying");
+
+  if (musicTime) {
+    music.currentTime = parseFloat(musicTime);
+  }
+
+  if (musicPlaying === "true") {
+    music.play().catch(() => {});
+  }
+
+  // Save time continuously
+  setInterval(() => {
+    localStorage.setItem("musicTime", music.currentTime);
+  }, 500);
+
+  // Mark as playing after first interaction
+  document.addEventListener("click", () => {
+    if (music.paused) {
+      music.play().catch(() => {});
+      localStorage.setItem("musicPlaying", "true");
+    }
+  });
+</script>
+
+</body>
+</html>

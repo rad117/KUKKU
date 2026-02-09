@@ -1,0 +1,296 @@
+/* ----------------------------
+   GLOBAL STYLING
+-----------------------------*/
+
+body {
+  margin: 0;
+  font-family: "Comic Sans MS", cursive;
+  text-align: center;
+  background: linear-gradient(to bottom, #7b07ff, #f0eceb);
+  height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Center main content nicely */
+.container {
+  text-align: center;
+  margin-top: 80px;
+}
+
+/* Headings */
+h1 {
+  font-size: 50px;
+  color: #120125;
+  text-shadow: 3px 3px #d3d3d3;
+}
+
+/* ----------------------------
+   INDEX PAGE TEDDY
+-----------------------------*/
+
+.teddy {
+  width: 180px;
+  margin-bottom: 20px;
+  animation: bounce 1.2s infinite alternate;
+}
+
+/* Teddy bounce animation */
+@keyframes bounce {
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(-15px);
+  }
+}
+
+/* ----------------------------
+   YES / NO BUTTONS
+-----------------------------*/
+
+.buttons {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+button {
+  font-size: 22px;
+  padding: 15px 40px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+/* YES Button */
+#yesBtn {
+  background: #120125;
+  color: white;
+}
+
+#yesBtn:hover {
+  transform: scale(1.15);
+  background: #120125;
+}
+
+/* NO Button */
+#noBtn {
+  background: white;
+  color: #120125;
+}
+
+/* ----------------------------
+   GIFTS PAGE PRESENT BOXES
+-----------------------------*/
+
+.gift-grid {
+  display: flex;
+  justify-content: center;
+  gap: 40px;
+  flex-wrap: wrap;
+  margin-top: 60px;
+}
+
+/* Present box design */
+.present-box {
+  width: 220px;
+  height: 220px;
+  background: #120125;
+  border-radius: 25px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  font-size: 90px;
+  transition: 0.3s;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+  position: relative;
+}
+
+/* Ribbon vertical */
+.present-box::before {
+  content: "";
+  position: absolute;
+  width: 40px;
+  height: 100%;
+  background: #c6c6ec;
+}
+
+/* Ribbon horizontal */
+.present-box::after {
+  content: "";
+  position: absolute;
+  height: 40px;
+  width: 100%;
+  background: #c6c6ec;
+}
+
+/* Hover animation */
+.present-box:hover {
+  transform: scale(1.15) rotate(-3deg);
+  background: #fff0f5;
+}
+
+/* Surprise Reveal Box */
+.gift-reveal {
+  display: none;
+  margin-top: 40px;
+  background: white;
+  padding: 25px;
+  border-radius: 25px;
+  max-width: 450px;
+  margin-left: auto;
+  margin-right: auto;
+  box-shadow: 0px 5px 25px rgba(0, 0, 0, 0.3);
+  animation: popUp 0.5s ease;
+}
+
+.gift-reveal h2 {
+  color: #120125;
+  font-size: 24px;
+}
+
+.gift-reveal button {
+  margin-top: 15px;
+  background: #120125;
+  color: white;
+  font-size: 20px;
+  padding: 12px 25px;
+  border-radius: 20px;
+}
+
+.gift-reveal button:hover {
+  background: #120125;
+  transform: scale(1.1);
+}
+
+/* Pop animation */
+@keyframes popUp {
+  from {
+    transform: scale(0.5);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* ----------------------------
+   LOVE LETTER SCROLL BOX
+-----------------------------*/
+
+.letter-box {
+  max-width: 650px;
+  height: 320px;
+  margin: auto;
+  background: white;
+  padding: 25px;
+  border-radius: 20px;
+  color: #120125;
+  font-size: 20px;
+  overflow-y: scroll;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.3);
+}
+
+/* Cute scrollbar */
+.letter-box::-webkit-scrollbar {
+  width: 8px;
+}
+
+.letter-box::-webkit-scrollbar-thumb {
+  background: blue;
+  border-radius: 10px;
+}
+
+/* ----------------------------
+   PHOTO SLIDESHOW PAGE
+------------------ -----------*/
+
+.slide {
+  width: 320px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 25px;
+  box-shadow: 0px 5px 20px rgba(0, 0, 0, 0.4);
+  transition: opacity 0.5s ease-in-out;
+}
+
+.slide-buttons {
+  margin-top: 20px;
+}
+
+.slide-buttons button {
+  font-size: 18px;
+  padding: 10px 25px;
+  border-radius: 20px;
+  background: white;
+  color: #120125;
+  font-weight: bold;
+}
+
+.slide-buttons button:hover {
+  background: #120125;
+  color: white;
+}
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100vw;         
+  height: 100vh;        
+
+  display: flex;
+  justify-content: center; 
+  align-items: center;     
+
+  background: linear-gradient(135deg, #7b2ff7, #f107a3);
+  z-index: 9999;
+}
+
+.popup-content {
+  background: white;
+  padding: 20px;
+  border-radius: 18px;
+  text-align: center;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start; 
+
+  width: 90%;
+  max-width: 420px;
+  max-height: 90vh;        
+}
+
+.popup-content h1 {
+  font-size: 22px;
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: #5a189a;
+}
+
+.popup-content video {
+  width: 100%;
+  max-width: 300px;
+  max-height: 55vh;             
+  object-fit: contain;          
+  border-radius: 12px;
+  margin-bottom: 15px;
+}
+
+
+
+.back-btn {
+  background: transparent;
+  color: #120125;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
